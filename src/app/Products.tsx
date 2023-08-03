@@ -25,7 +25,8 @@ interface Props {
 
 export default function Products({ products, categories }: Props) {
     const [startIndex, setStartIndex] = useState(0);
-    const [currentProducts, setCurrentProducts] = useState([...products.slice(startIndex, 10)]);
+    const [filteredProducts, setFilteredProducts] = useState([...products]);
+    const [currentProducts, setCurrentProducts] = useState([...filteredProducts.slice(startIndex, 10)]);
     const [selectedCategory, setSelectedCategory] = useState();
 
     const handleNext = () => {
@@ -37,11 +38,21 @@ export default function Products({ products, categories }: Props) {
     };
 
     useEffect(() => {
-        setCurrentProducts([...products.slice(startIndex, startIndex + 10)]);
+        setCurrentProducts([...filteredProducts.slice(startIndex, startIndex + 10)]);
     }, [startIndex]);
 
     const radioChangeHandler = (e: any) => {
         setSelectedCategory(e.target.value);
+    };
+
+    useEffect(() => {
+        setStartIndex(0);
+        setCurrentProducts([...filteredProducts.slice(0, 10)]);
+    }, [filteredProducts]);
+
+    const handleSearch = (e: any) => {
+        const filteredByName = products.filter(({ title }) => title.toLowerCase().includes(e.target.value));
+        setFilteredProducts([...filteredByName]);
     };
 
     return (
@@ -53,7 +64,8 @@ export default function Products({ products, categories }: Props) {
                         type="text"
                         id="search"
                         name="search"
-                        className="rounded-lg shadow-lg p-3 mx-4 bg-slate-50"
+                        onChange={handleSearch}
+                        className="rounded-lg shadow-lg p-2 mx-4 bg-slate-50"
                     />
                 </div>
 
@@ -123,7 +135,7 @@ export default function Products({ products, categories }: Props) {
                 <button
                     className="rounded-lg bg-stone-300 p-2 m-2"
                     onClick={handleNext}
-                    disabled={startIndex + 10 >= products.length}
+                    disabled={startIndex + 10 >= filteredProducts.length}
                 >
                     Next
                 </button>
