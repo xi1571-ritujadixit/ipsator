@@ -48,10 +48,14 @@ export default function Products({ products, categories }: Props) {
                     selectedCategory={filters?.category}
                     handleFiltersChange={handleFiltersChange}
                 />
-                <div className="flex flex-wrap sm:w-full md:w-3/4 lg:w-5/6 justify-center">
-                    {currentProducts.map((product: Product) => (
-                        <ProductCard key={product.id} product={product} />
-                    ))}
+                <div className="flex flex-wrap sm:w-full md:w-3/4 lg:w-5/6 justify-center items-center">
+                    {filteredProducts.length ? (
+                        currentProducts.map((product: Product) => (
+                            <ProductCard key={product.id} product={product} />
+                        ))
+                    ) : (
+                        <>No Products Available! Select any other filters</>
+                    )}
                 </div>
             </div>
             <Pagination

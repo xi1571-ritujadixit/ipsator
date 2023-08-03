@@ -14,7 +14,7 @@ export default function SearchAndSort({ handleFiltersChange }: Props) {
                     id="search"
                     name="search"
                     onChange={handleFiltersChange}
-                    className="rounded-lg shadow-lg p-2 mx-4 bg-slate-50"
+                    className="rounded-lg shadow-lg p-2 mx-4 bg-slate-50 border border-gray-500"
                 />
             </div>
 

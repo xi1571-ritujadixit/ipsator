@@ -16,14 +16,14 @@ export default function Pagination({
     return (
         <div className="flex justify-end">
             <button
-                className="rounded-lg bg-stone-300 p-2 m-2"
+                className="rounded-lg bg-stone-300 p-2 m-2 disabled:opacity-75"
                 onClick={handlePrevious}
                 disabled={isPreviousDisabled}
             >
                 Previous
             </button>
             <button
-                className="rounded-lg bg-stone-300 p-2 m-2"
+                className="rounded-lg bg-stone-300 p-2 m-2 disabled:opacity-75"
                 onClick={handleNext}
                 disabled={isNextDisabled}
             >
