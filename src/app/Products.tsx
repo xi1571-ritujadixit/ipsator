@@ -43,6 +43,8 @@ export default function Products({ products, categories }: Props) {
 
     const radioChangeHandler = (e: any) => {
         setSelectedCategory(e.target.value);
+        const filteredByCategory = products.filter(({ category }) => category.name === e.target.value);
+        setFilteredProducts([...filteredByCategory]);
     };
 
     useEffect(() => {
