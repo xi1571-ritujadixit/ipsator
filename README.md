@@ -37,6 +37,10 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 https://ipsator.vercel.app/
 
+## Tech Stack -
+
+TECH STACK - Next.js, React, Typescript, Tailwind
+
 ## Design Overview:
 
 1. The application utilizes '/products' and '/categories' APIs sourced from the internet. Data fetching for products and categories is done in the server component page.tsx.
