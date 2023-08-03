@@ -55,6 +55,13 @@ export default function Products({ products, categories }: Props) {
         setFilteredProducts([...filteredByName]);
     };
 
+    const handleSelectChange = (e: any) => {
+        const sortedProducts = products.sort((a, b) =>
+            e.target.value === "high-to-low" ? b.price - a.price : a.price - b.price
+        );
+        setFilteredProducts([...sortedProducts]);
+    };
+
     return (
         <>
             <div className="flex justify-around items-center">
@@ -71,7 +78,7 @@ export default function Products({ products, categories }: Props) {
 
                 <div>
                     <label htmlFor="sort-by">Sort by:</label>
-                    <select name="sort" id="sort-by">
+                    <select name="sort" id="sort-by" onChange={handleSelectChange}>
                         <option value="">--Please choose an option--</option>
                         <option value="low-to-high">Price - low to high</option>
                         <option value="high-to-low">Price - high to low</option>
@@ -90,7 +97,7 @@ export default function Products({ products, categories }: Props) {
                                     name={category.name}
                                     value={category.name}
                                     checked={selectedCategory === category.name}
-                                    onChange={(e) => radioChangeHandler(e)}
+                                    onChange={radioChangeHandler}
                                 />
                                 <label htmlFor="category.id" className="px-2">
                                     {category.name}
