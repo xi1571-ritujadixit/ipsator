@@ -18,7 +18,7 @@ interface Props {
 
 export default function ProductCard({ product }: Props) {
     return (
-        <div className="border border-gray-500 m-4 rounded-lg flex flex-col w-1/4">
+        <div className="border border-gray-500 m-4 rounded-lg flex flex-col w-1/2 md:w-1/3 lg:w-1/5 grow">
             <div className="relative h-60">
                 <Image
                     src={product.category.image}
@@ -31,7 +31,8 @@ export default function ProductCard({ product }: Props) {
             <div className="p-3">
                 <div>₹ {product.price}</div>
                 <div>{product.title}</div>
-                <div>{product.id}</div>
+                <div>Product Id : {product.id}</div>
+                <div>Category: {product.category.name}</div>
             </div>
         </div>
     );

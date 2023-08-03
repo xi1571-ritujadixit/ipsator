@@ -14,7 +14,7 @@ export default function Pagination({
     isNextDisabled,
 }: Props) {
     return (
-        <div className="flex justify-center">
+        <div className="flex justify-end">
             <button
                 className="rounded-lg bg-stone-300 p-2 m-2"
                 onClick={handlePrevious}

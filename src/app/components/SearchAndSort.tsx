@@ -6,7 +6,7 @@ interface Props {
 
 export default function SearchAndSort({ handleFiltersChange }: Props) {
     return (
-        <div className="flex justify-around items-center">
+        <div className="flex flex-col md:flex-row justify-around items-center mb-4">
             <div>
                 <label htmlFor="search">Search:</label>
                 <input

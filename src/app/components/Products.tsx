@@ -18,7 +18,7 @@ interface Product {
 }
 
 interface Categories {
-    id: number;
+    id: string;
     name: string;
 }
 
@@ -41,13 +41,13 @@ export default function Products({ products, categories }: Props) {
     return (
         <>
             <SearchAndSort handleFiltersChange={handleFiltersChange} />
-            <div className="flex">
+            <div className="flex flex-col md:flex-row">
                 <Category
                     categories={categories}
                     selectedCategory={filters?.category}
                     handleFiltersChange={handleFiltersChange}
                 />
-                <div className="flex flex-wrap w-5/6">
+                <div className="flex flex-wrap sm:w-full md:w-3/4 lg:w-5/6 justify-center">
                     {currentProducts.map((product: Product) => (
                         <ProductCard key={product.id} product={product} />
                     ))}
