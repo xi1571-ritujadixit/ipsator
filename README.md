@@ -50,8 +50,9 @@ TECH STACK - Next.js, React, Typescript, Tailwind
 5. The app's UI design was inspired by Google shopping, acknowledging a focus on frontend implementation rather than UX design.
 6. To centralize information about the base API URL, an environment.ts file was utilized. This ensures a single update point for any URL changes.
 7. Leveraging the Image component from the Next framework offers numerous optimizations, including lazy loading and responsive image sizes, contributing to enhanced performance.
+8. The application is fully responsive without the need for custom CSS code. By incorporating breakpoints for different screen sizes such as small (sm), medium (md), large (lg), and beyond, the app automatically adjusts its layout and appearance to deliver a seamless experience across various devices and screen resolutions.
 
-## Potential Next Steps for App Improvement:
+## Potential next Steps for App Improvement:
 
 1. Enhance the user interface further to improve visual appeal and usability.
 2. Implement dynamic routing for product details pages, enabling users to click on each product card for more information.

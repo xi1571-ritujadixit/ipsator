@@ -18,7 +18,7 @@ interface Props {
 
 export default function ProductCard({ product }: Props) {
     return (
-        <div className="border border-gray-500 m-4 rounded-lg flex flex-col w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5">
+        <div className="border border-gray-500 m-4 rounded-lg flex flex-col w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 grow lg:grow-0">
             <div className="relative h-60">
                 <Image
                     src={product.category.image}
