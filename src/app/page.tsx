@@ -1,4 +1,4 @@
-import Products from "./Products";
+import Products from "./components/Products";
 
 async function getProductsData() {
     const res = await fetch("https://api.escuelajs.co/api/v1/products");
