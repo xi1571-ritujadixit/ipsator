@@ -6,6 +6,7 @@ interface Product {
     price: number;
     description: string;
     category: {
+        id: string;
         image: string;
         name: string;
     };
@@ -19,7 +20,7 @@ export const useProductsState = ({ products }: Props) => {
     const [startIndex, setStartIndex] = useState(0);
     const [filteredProducts, setFilteredProducts] = useState([...products]);
     const [currentProducts, setCurrentProducts] = useState([...filteredProducts.slice(0, 10)]);
-    const [filters, setFilters] = useState({ category: "", search: "", sort: "" });
+    const [filters, setFilters] = useState({ category: "all", search: "", sort: "" });
 
     const handleNext = () => {
         setStartIndex((prevState) => prevState + 10);
@@ -40,10 +41,12 @@ export const useProductsState = ({ products }: Props) => {
 
     useEffect(() => {
         let filteredProducts = [...products];
-        if (filters.category || filters.search) {
-            filteredProducts = filteredProducts.filter(
-                ({ category, title }) =>
-                    category.name === filters.category && title.toLowerCase().includes(filters.search)
+        if (filters.category !== "all") {
+            filteredProducts = filteredProducts.filter(({ category }) => category.id == filters.category);
+        }
+        if (filters.search) {
+            filteredProducts = filteredProducts.filter(({ title }) =>
+                title.toLowerCase().includes(filters.search)
             );
         }
         if (filters.sort) {
