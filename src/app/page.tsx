@@ -1,7 +1,8 @@
 import Products from "./components/Products";
+import { base_URL } from "./environment";
 
 async function getProductsData() {
-    const res = await fetch("https://api.escuelajs.co/api/v1/products");
+    const res = await fetch(`${base_URL}/products`);
     if (!res.ok) {
         // This will activate the closest `error.js` Error Boundary
         throw new Error("Failed to fetch data");
@@ -11,7 +12,7 @@ async function getProductsData() {
 }
 
 async function getCategoriesData() {
-    const res = await fetch("https://api.escuelajs.co/api/v1/categories");
+    const res = await fetch(`${base_URL}/categories`);
     if (!res.ok) {
         // This will activate the closest `error.js` Error Boundary
         throw new Error("Failed to fetch data");
