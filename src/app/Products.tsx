@@ -41,24 +41,26 @@ export default function Products({ products, categories }: Props) {
         setCurrentProducts([...filteredProducts.slice(startIndex, startIndex + 10)]);
     }, [startIndex]);
 
+    useEffect(() => {
+        setStartIndex(0);
+        setCurrentProducts([...filteredProducts.slice(0, 10)]);
+    }, [filteredProducts]);
+
     const radioChangeHandler = (e: any) => {
         setSelectedCategory(e.target.value);
         const filteredByCategory = products.filter(({ category }) => category.name === e.target.value);
         setFilteredProducts([...filteredByCategory]);
     };
 
-    useEffect(() => {
-        setStartIndex(0);
-        setCurrentProducts([...filteredProducts.slice(0, 10)]);
-    }, [filteredProducts]);
-
     const handleSearch = (e: any) => {
-        const filteredByName = products.filter(({ title }) => title.toLowerCase().includes(e.target.value));
+        const filteredByName = filteredProducts.filter(({ title }) =>
+            title.toLowerCase().includes(e.target.value)
+        );
         setFilteredProducts([...filteredByName]);
     };
 
     const handleSelectChange = (e: any) => {
-        const sortedProducts = products.sort((a, b) =>
+        const sortedProducts = filteredProducts.sort((a, b) =>
             e.target.value === "high-to-low" ? b.price - a.price : a.price - b.price
         );
         setFilteredProducts([...sortedProducts]);
